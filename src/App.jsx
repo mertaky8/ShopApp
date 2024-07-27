@@ -102,6 +102,7 @@ function App() {
             value={productShop}
             onChange={(e) => {
               setProductShop(e.target.value);
+              console.log(productShop);
             }}
           >
             <option>Shop</option>
@@ -185,11 +186,15 @@ function App() {
           }}
         >
           <option value={""}>Filter Shop</option>
-          {shopsObj.map((shop) => (
-            <option key={shop.id} value={shop.id}>
-              {shop.name}
-            </option>
-          ))}
+          {shopsObj.map(
+            (
+              shop // value kısmına shop.id ataması yapılır
+            ) => (
+              <option key={shop.id} value={shop.id}>
+                {shop.name}
+              </option>
+            )
+          )}
         </Form.Select>
         <Form.Select
           aria-label="Default select example"
@@ -242,7 +247,7 @@ function App() {
               <td>
                 {
                   shopsObj.find(
-                    (shopObj) => shopObj.id === parseInt(product.shop)
+                    (shopObj) => shopObj.id === parseInt(product.shop) //seçilen obj idsi ile ürün var ise(value = shop.id atanmıştı ve productShop stateine atanıyor o da product.shop zaten)name gösterilir.
                   )?.name
                 }
               </td>
